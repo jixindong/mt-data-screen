@@ -1,0 +1,13 @@
+/* ======================== Default Style ======================== */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	&::selection {
+		color: #fff;
+		background-color: #f0c9cf;
+	}
+}
+/* ======================== Tool Class ======================== */
+@import './tool-class.css';
