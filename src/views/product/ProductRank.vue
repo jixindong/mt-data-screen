@@ -9,13 +9,15 @@
 							<th>排名</th>
 							<th>商品名称</th>
 							<th>销量</th>
+							<th>商品图片</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="(item, index) in productRank" :key="index">
+						<tr v-for="(item, index) in productRankData" :key="index">
 							<td>{{ index + 1 }}</td>
 							<td>{{ item.name }}</td>
 							<td>{{ item.sales }}</td>
+							<td><img :src="item.img" /></td>
 						</tr>
 					</tbody>
 				</table>
@@ -26,31 +28,10 @@
 
 <script>
 export default {
-	data() {
-		return {
-			productRank: [
-				{
-					name: '商品1',
-					sales: 1234
-				},
-				{
-					name: '商品2',
-					sales: 630
-				},
-				{
-					name: '商品3',
-					sales: 535
-				},
-				{
-					name: '商品4',
-					sales: 351
-				},
-				{
-					name: '商品5',
-					sales: 264
-				}
-			]
-		};
+	props: {
+		productRankData: {
+			type: Array
+		}
 	}
 };
 </script>
@@ -66,7 +47,7 @@ export default {
 		}
 		.productTb {
 			width: 100%;
-			font-size: 20px;
+			font-size: 16px;
 			text-align: center;
 			overflow: hidden;
 			border-collapse: collapse;
@@ -87,6 +68,9 @@ export default {
 				}
 				td {
 					padding: 4px 0;
+					img {
+						height: 24px;
+					}
 				}
 			}
 		}

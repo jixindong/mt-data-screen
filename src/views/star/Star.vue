@@ -2,13 +2,13 @@
 	<div class="star">
 		<dv-border-box-13>
 			<div class="msg">
-				<div class="mb-4">
+				<div class="mb-3">
 					签约达人数量：
-					<span>{{ starNum }}</span>
+					<span class="text-DS-Digital">{{ starData.starNum }}</span>
 				</div>
 				<div>
 					签约达人粉丝总数：
-					<span>{{ starFansNum }}</span>
+					<span class="text-DS-Digital">{{ starData.starFansNum }}</span>
 				</div>
 			</div>
 		</dv-border-box-13>
@@ -17,11 +17,10 @@
 
 <script>
 export default {
-	data() {
-		return {
-			starNum: 366,
-			starFansNum: 600
-		};
+	props: {
+		starData: {
+			type: Object
+		}
 	}
 };
 </script>
@@ -33,6 +32,7 @@ export default {
 		display: flex;
 		flex-flow: column nowrap;
 		padding: 30px;
+		height: 160px;
 		span {
 			color: #1fdaff;
 			font-size: 32px;

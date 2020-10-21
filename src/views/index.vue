@@ -2,11 +2,11 @@
 	<dv-full-screen-container class="index">
 		<div class="lf d-flex flex-column">
 			<!-- 达人 -->
-			<star />
+			<star :starData="starData" />
 			<!-- 商品分类 -->
-			<product-classify />
+			<product-classify :productClassifyData="productClassifyData" />
 			<!-- 补贴 -->
-			<subsidy />
+			<subsidy :subsidyData="subsidyData" />
 		</div>
 
 		<div class="ct d-flex flex-column">
@@ -17,20 +17,20 @@
 			<!-- 时间 -->
 			<div class="dateBox">{{ dateString }}</div>
 			<!-- 成交数量 -->
-			<deal-num />
+			<deal-num :dealNumData="dealNumData" />
 			<!-- 地图 -->
-			<map-nation />
+			<map-nation :mapNationData="mapNationData" />
 			<!-- 成交趋势 -->
-			<deal-trend />
+			<deal-trend :dealTrendData="dealTrendData" />
 		</div>
 
 		<div class="rt d-flex flex-column">
 			<!-- 商品数量 -->
-			<product-num />
+			<product-num :productNumData="productNumData" />
 			<!-- 商品排行 -->
-			<product-rank />
+			<product-rank :productRankData="productRankData" />
 			<!-- 带货 -->
-			<sell />
+			<sell :sellData="sellData" />
 		</div>
 	</dv-full-screen-container>
 </template>
@@ -56,9 +56,30 @@ export default {
 	},
 	data() {
 		return {
+			// 时间定时器
 			timer: null,
+			// 时间
 			dateString: '',
-			ws: ''
+			// websocket
+			ws: null,
+			// 达人数据
+			starData: {},
+			// 商品分类数据
+			productClassifyData: {},
+			// 补贴数据
+			subsidyData: {},
+			// 成交数量数据
+			dealNumData: {},
+			// 地图数据
+			mapNationData: {},
+			// 成交趋势数据
+			dealTrendData: {},
+			// 商品数量数据
+			productNumData: {},
+			// 商品排行数据
+			productRankData: [],
+			// 带货数据
+			sellData: {}
 		};
 	},
 	methods: {
@@ -88,22 +109,13 @@ export default {
 		webSocketInit() {
 			const wsURL = 'ws://192.168.1.152:8080/ws/asset';
 			this.ws = new WebSocket(wsURL);
-			this.ws.onopen = this.websocketOnopen(); // websocket建立连接
-			this.ws.onmessage = this.websocketOnmessage(); // websocket接收数据
-			this.ws.onerror = this.websocketOnError(); // websocket连接失败
-		},
-		// websocket建立连接
-		websocketOnopen() {
-			let data = {};
-			this.websocketSend(JSON.stringify(data)); // websocket发送数据
-		},
-		// websocket发送数据
-		websocketSend(data) {
-			this.ws.send(data);
+			this.ws.onmessage = this.websocketOnmessage; // websocket接收数据
+			this.ws.onerror = this.websocketOnError; // websocket连接失败
 		},
 		// websocket接收数据
-		websocketOnmessage(e) {
-			const res = JSON.parse(e);
+		websocketOnmessage(res) {
+			const data = JSON.parse(res.data);
+			this.handleData(data); // 设置数据
 		},
 		// websocket连接失败
 		websocketOnError() {
@@ -112,6 +124,126 @@ export default {
 		// websocket断开连接
 		websocketClose() {
 			this.ws.close();
+		},
+		// 设置数据
+		handleData(data) {
+			const {
+				starNum,
+				starFansNum,
+				leftTwo,
+				leftThree,
+				dealOrderNum,
+				dealSellNum,
+				todayDealSellNum,
+				indexTwo,
+				indexThree,
+				merchantNum,
+				productNum,
+				videoNum,
+				rightTwo,
+				rightThree
+			} = data;
+
+			// 达人数据
+			this.starData = {
+				starNum,
+				starFansNum
+			};
+			// 商品分类数据
+			this.productClassifyData = {
+				data: leftTwo,
+				colors: ['#0094ff', '#1fdaff', '#3399cc', '#32c5e9', '#96bfff'],
+				unit: '个',
+				showValue: true
+			};
+			// 补贴数据
+			this.subsidyData = {
+				xAxis: {
+					name: '第一周',
+					data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				},
+				yAxis: {
+					name: '销售额',
+					data: 'value'
+				},
+				series: [
+					{
+						data: leftThree,
+						type: 'bar',
+						gradient: {
+							color: ['rgba(208, 223, 230, .6)', 'rgba(92, 179, 204, .1)'],
+							local: false
+						},
+						barStyle: {
+							stroke: '#67e0e3'
+						}
+					}
+				]
+			};
+			// 成交数量数据
+			this.dealNumData = {
+				yDealOrderNum: dealOrderNum,
+				yDealSellNum: dealSellNum,
+				tDealSellNum: {
+					number: [todayDealSellNum],
+					content: '{nt}元'
+				}
+			};
+			// 地图数据
+			this.mapNationData = {
+				columns: ['位置', '商家'],
+				rows: indexTwo
+			};
+			// 成交趋势数据
+			this.dealTrendData = {
+				title: {
+					text: '成交数额趋势图'
+				},
+				xAxis: {
+					name: '第二周',
+					data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				},
+				yAxis: {
+					name: '销售额',
+					data: 'value'
+				},
+				series: [
+					{
+						data: indexThree,
+						type: 'line',
+						lineArea: {
+							show: true,
+							gradient: ['rgba(55, 162, 218, 0.6)', 'rgba(55, 162, 218, 0)']
+						}
+					}
+				]
+			};
+			// 商品数量数据
+			this.productNumData = {
+				merchantNum,
+				productNum,
+				videoNum
+			};
+			// 商品排行数据
+			this.productRankData = rightTwo;
+			// 带货数据
+			let sellList = [];
+			rightThree.forEach(e => {
+				let array = [];
+				array[0] = e.did;
+				array[1] = e.productName;
+				array[2] = `<img src="${e.img}">`;
+				array[3] = e.time;
+				sellList.push(array);
+			});
+			this.sellData = {
+				header: ['达人id', '商品名称', '商品图片', '时间'],
+				data: sellList,
+				waitTime: 1500,
+				columnWidth: [65, 240, 100],
+				align: ['center', 'center', 'center', 'center'],
+				carousel: 'page'
+			};
 		}
 	},
 	created() {

@@ -4,15 +4,15 @@
 			<div class="msg">
 				<div>
 					签约商家数：
-					<span>{{ merchantNum }}</span>
+					<span class="text-DS-Digital">{{ productNumData.merchantNum }}</span>
 				</div>
 				<div>
 					商品数：
-					<span>{{ productNum }}</span>
+					<span class="text-DS-Digital">{{ productNumData.productNum }}</span>
 				</div>
 				<div>
 					视频推广数：
-					<span>{{ videoNum }}</span>
+					<span class="text-DS-Digital">{{ productNumData.videoNum }}</span>
 				</div>
 			</div>
 		</dv-border-box-13>
@@ -21,12 +21,10 @@
 
 <script>
 export default {
-	data() {
-		return {
-			merchantNum: 151,
-			productNum: 351,
-			videoNum: 246
-		};
+	props: {
+		productNumData: {
+			type: Object
+		}
 	}
 };
 </script>
@@ -38,6 +36,7 @@ export default {
 		display: flex;
 		flex-flow: column nowrap;
 		padding: 30px;
+		height: 162px;
 		span {
 			color: #1fdaff;
 			font-size: 32px;

@@ -3,15 +3,15 @@
 		<dv-border-box-13>
 			<div class="msg">
 				<div class="title">今日成交额</div>
-				<dv-digital-flop :config="todayDealSellNum" />
+				<dv-digital-flop :config="dealNumData.tDealSellNum" />
 				<div class="yesterday">
 					<div>
 						昨日成交额：
-						<span>{{ yesterday.dealSellNum }}</span>
+						<span class="text-DS-Digital">{{ dealNumData.yDealSellNum }}</span>
 					</div>
 					<div>
 						昨日成交订单数：
-						<span>{{ yesterday.dealOrderNum }}</span>
+						<span class="text-DS-Digital">{{ dealNumData.yDealOrderNum }}</span>
 					</div>
 				</div>
 			</div>
@@ -21,37 +21,10 @@
 
 <script>
 export default {
-	data() {
-		return {
-			timer: null,
-			todayDealSellNum: {
-				number: [0],
-				content: '{nt}元'
-			},
-			yesterday: {
-				dealOrderNum: 166,
-				dealSellNum: 6666
-			}
-		};
-	},
-	methods: {
-		// 获取今日交易额
-		fetchTodayDealSellNum() {
-			let num = 0;
-			let todayDealSellNum = {
-				number: [0],
-				content: '{nt}元'
-			};
-
-			this.timer = setInterval(() => {
-				this.todayDealSellNum = { ...todayDealSellNum };
-				num = num + 100;
-				todayDealSellNum.number[0] = num;
-			}, 2000);
+	props: {
+		dealNumData: {
+			type: Object
 		}
-	},
-	created() {
-		this.fetchTodayDealSellNum(); // 获取今日交易额
 	}
 };
 </script>
@@ -61,6 +34,7 @@ export default {
 	padding: 6px;
 	.msg {
 		padding: 10px;
+		height: 160px;
 		> .title {
 			padding-top: 16px;
 			text-align: center;

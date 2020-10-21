@@ -13,7 +13,10 @@
 /* ======================== Tool Class ======================== */
 @import './tool-class.css';
 
-/* ======================== defined style ======================== */
+/* ======================== Defined Fonts ======================== */
+@import '~@/assets/fonts/fonts.css';
+
+/* ======================== Defined style ======================== */
 // 文字流光
 @keyframes hue {
 	from {
@@ -31,4 +34,8 @@
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	animation: hue 12s infinite linear;
+}
+// 字体 DS-Digital
+.text-DS-Digital {
+	font-family: DS-Digital;
 }
