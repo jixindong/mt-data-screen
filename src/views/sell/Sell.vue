@@ -1,11 +1,11 @@
 <template>
 	<div class="sell">
-		<dv-border-box-13>
+		<dv-border-box-8>
 			<div class="msg">
 				<div class="title">实时带货数据</div>
-				
+				<dv-scroll-board :config="sell" />
 			</div>
-		</dv-border-box-13>
+		</dv-border-box-8>
 	</div>
 </template>
 
@@ -33,4 +33,19 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.sell {
+	padding: 10px;
+	.msg {
+		padding: 10px 4px;
+		height: 388px;
+		> .title {
+			margin: 20px 0;
+			text-align: center;
+		}
+		.dv-scroll-board {
+			height: 300px;
+		}
+	}
+}
+</style>

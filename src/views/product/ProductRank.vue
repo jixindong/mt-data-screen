@@ -13,7 +13,7 @@
 					</thead>
 					<tbody>
 						<tr v-for="(item, index) in productRank" :key="index">
-							<td>{{ index }}</td>
+							<td>{{ index + 1 }}</td>
 							<td>{{ item.name }}</td>
 							<td>{{ item.sales }}</td>
 						</tr>
@@ -59,7 +59,7 @@ export default {
 .productRank {
 	padding: 10px;
 	.msg {
-		padding: 10px;
+		padding: 10px 7px 7px;
 		> .title {
 			margin: 20px 0;
 			text-align: center;
@@ -70,7 +70,7 @@ export default {
 			text-align: center;
 			overflow: hidden;
 			border-collapse: collapse;
-			border-bottom-left-radius: 16px;
+			border-bottom-left-radius: 19px;
 			thead {
 				background-color: rgb(0, 186, 255);
 				th {

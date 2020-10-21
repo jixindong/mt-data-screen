@@ -9,5 +9,26 @@
 		background-color: #f0c9cf;
 	}
 }
+
 /* ======================== Tool Class ======================== */
 @import './tool-class.css';
+
+/* ======================== defined style ======================== */
+// 文字流光
+@keyframes hue {
+	from {
+		filter: hue-rotate(0);
+	}
+
+	to {
+		filter: hue-rotate(360deg);
+	}
+}
+.text-hue {
+	color: #f35626;
+	background-color: coral;
+	background-image: -webkit-linear-gradient(45deg, #f35626, #feab3a);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: hue 12s infinite linear;
+}
