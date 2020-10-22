@@ -47,25 +47,21 @@ export default {
 		}
 		.productTb {
 			width: 100%;
+			min-height: 220px;
 			font-size: 16px;
 			text-align: center;
 			overflow: hidden;
 			border-collapse: collapse;
 			border-bottom-left-radius: 19px;
 			thead {
-				background-color: rgb(0, 186, 255);
+				background-color: rgba(0, 186, 255, 0.67);
 				th {
 					padding: 4px 0;
 					font-weight: 500;
 				}
 			}
 			tbody tr {
-				&:nth-child(odd) {
-					background-color: rgb(10, 39, 50);
-				}
-				&:nth-child(even) {
-					background-color: rgb(0, 59, 81);
-				}
+				border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 				td {
 					padding: 4px 0;
 					img {

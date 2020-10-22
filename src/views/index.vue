@@ -61,6 +61,7 @@ export default {
 			// 时间
 			dateString: '',
 			// websocket
+			wsURL:'ws://192.168.1.177:8080/ws/asset',
 			ws: null,
 			// 达人数据
 			starData: {},
@@ -107,8 +108,7 @@ export default {
 		},
 		// websocket初始化
 		webSocketInit() {
-			const wsURL = 'ws://192.168.1.177:8080/ws/asset';
-			this.ws = new WebSocket(wsURL);
+			this.ws = new WebSocket(this.wsURL);
 			this.ws.onmessage = this.websocketOnmessage; // websocket接收数据
 			this.ws.onerror = this.websocketOnError; // websocket连接失败
 		},
@@ -239,6 +239,9 @@ export default {
 			this.sellData = {
 				header: ['达人id', '商品图片', '商品名称', '时间'],
 				data: sellList,
+				headerBGC:'rgba(0,186,255,.67)',
+				oddRowBGC:'rgba(255,255,255,.2)',
+				evenRowBGC:'rgba(255,255,255,.1)',
 				waitTime: 1500,
 				columnWidth: [65, 240, 100],
 				align: ['center', 'center', 'center', 'center'],

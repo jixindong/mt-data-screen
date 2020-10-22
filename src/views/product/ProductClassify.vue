@@ -23,7 +23,7 @@ export default {
 .productClassify {
 	padding: 10px;
 	.msg {
-		padding: 10px 0;
+		padding: 10px;
 		> .title {
 			padding: 16px 0 8px;
 			text-align: center;
