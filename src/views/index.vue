@@ -12,7 +12,7 @@
 		<div class="ct d-flex flex-column">
 			<!-- 标题 -->
 			<div class="titleBox">
-				<dv-border-box-1><div class="title text-hue">魔推精选数据中心</div></dv-border-box-1>
+				<div class="title">魔推精选数据中心</div>
 			</div>
 			<!-- 时间 -->
 			<div class="dateBox">{{ dateString }}</div>
@@ -107,7 +107,7 @@ export default {
 		},
 		// websocket初始化
 		webSocketInit() {
-			const wsURL = 'ws://192.168.1.152:8080/ws/asset';
+			const wsURL = 'ws://192.168.1.177:8080/ws/asset';
 			this.ws = new WebSocket(wsURL);
 			this.ws.onmessage = this.websocketOnmessage; // websocket接收数据
 			this.ws.onerror = this.websocketOnError; // websocket连接失败
@@ -231,13 +231,13 @@ export default {
 			rightThree.forEach(e => {
 				let array = [];
 				array[0] = e.did;
-				array[1] = e.productName;
-				array[2] = `<img src="${e.img}">`;
+				array[1] = `<img src="${e.img}">`;
+				array[2] = e.productName;
 				array[3] = e.time;
 				sellList.push(array);
 			});
 			this.sellData = {
-				header: ['达人id', '商品名称', '商品图片', '时间'],
+				header: ['达人id', '商品图片', '商品名称', '时间'],
 				data: sellList,
 				waitTime: 1500,
 				columnWidth: [65, 240, 100],
@@ -262,7 +262,9 @@ export default {
 	color: #fff;
 	font-size: 26px;
 	font-weight: 300;
-	background-color: #000;
+	background-image: url(../assets/images/background-image-1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 	.lf {
 		width: 600px;
 	}
