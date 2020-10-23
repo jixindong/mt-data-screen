@@ -7,17 +7,18 @@
 					<thead>
 						<tr>
 							<th>排名</th>
-							<th>商品名称</th>
+							<th class="w-50">商品</th>
 							<th>销量</th>
-							<th>商品图片</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr v-for="(item, index) in productRankData" :key="index">
 							<td>{{ index + 1 }}</td>
-							<td>{{ item.name }}</td>
+							<td class="d-flex align-items-center">
+								<img :src="item.img" class="mr-2" />
+								<span>{{ item.name }}</span>
+							</td>
 							<td>{{ item.sales }}</td>
-							<td><img :src="item.img" /></td>
 						</tr>
 					</tbody>
 				</table>

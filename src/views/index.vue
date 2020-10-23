@@ -11,9 +11,7 @@
 
 		<div class="ct d-flex flex-column">
 			<!-- 标题 -->
-			<div class="titleBox">
-				<div class="title">魔推精选数据中心</div>
-			</div>
+			<div class="titleBox"><div class="title">魔推精选数据中心</div></div>
 			<!-- 时间 -->
 			<div class="dateBox">{{ dateString }}</div>
 			<!-- 成交数量 -->
@@ -61,7 +59,7 @@ export default {
 			// 时间
 			dateString: '',
 			// websocket
-			wsURL:'ws://192.168.1.177:8080/ws/asset',
+			wsURL: 'ws://192.168.1.177:8080/ws/asset',
 			ws: null,
 			// 达人数据
 			starData: {},
@@ -141,7 +139,8 @@ export default {
 				productNum,
 				videoNum,
 				rightTwo,
-				rightThree
+				rightThree,
+				hzb
 			} = data;
 
 			// 达人数据
@@ -159,8 +158,8 @@ export default {
 			// 补贴数据
 			this.subsidyData = {
 				xAxis: {
-					name: '第一周',
-					data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+					name: '日期',
+					data: hzb
 				},
 				yAxis: {
 					name: '销售额',
@@ -200,8 +199,8 @@ export default {
 					text: '成交数额趋势图'
 				},
 				xAxis: {
-					name: '第二周',
-					data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+					name: '日期',
+					data: hzb
 				},
 				yAxis: {
 					name: '销售额',
@@ -231,19 +230,17 @@ export default {
 			rightThree.forEach(e => {
 				let array = [];
 				array[0] = e.did;
-				array[1] = `<img src="${e.img}">`;
-				array[2] = e.productName;
-				array[3] = e.time;
+				array[1] = `<div class="d-flex align-items-center"><img class="mr-2" src="${e.img}"><span>${e.productName}</span></div>`;
+				array[2] = e.time;
 				sellList.push(array);
 			});
 			this.sellData = {
-				header: ['达人id', '商品图片', '商品名称', '时间'],
+				header: ['达人id', '商品', '时间'],
 				data: sellList,
-				headerBGC:'rgba(0,186,255,.67)',
-				oddRowBGC:'rgba(255,255,255,.2)',
-				evenRowBGC:'rgba(255,255,255,.1)',
+				headerBGC: 'rgba(0,186,255,.67)',
+				oddRowBGC: 'rgba(255,255,255,.2)',
+				evenRowBGC: 'rgba(255,255,255,.1)',
 				waitTime: 1500,
-				columnWidth: [65, 240, 100],
 				align: ['center', 'center', 'center', 'center'],
 				carousel: 'page'
 			};
@@ -269,10 +266,10 @@ export default {
 	background-repeat: no-repeat;
 	background-size: cover;
 	.lf {
-		width: 600px;
+		width: 30%;
 	}
 	.ct {
-		width: 720px;
+		width: 40%;
 		.titleBox {
 			padding: 5px;
 			.title {
@@ -290,7 +287,7 @@ export default {
 		}
 	}
 	.rt {
-		width: 600px;
+		width: 30%;
 	}
 }
 </style>

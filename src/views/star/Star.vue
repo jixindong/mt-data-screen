@@ -9,6 +9,7 @@
 				<div>
 					签约达人粉丝总数：
 					<span class="text-DS-Digital">{{ starData.starFansNum }}</span>
+					<span class="unit">万</span>
 				</div>
 			</div>
 		</dv-border-box-13>
@@ -32,10 +33,14 @@ export default {
 		display: flex;
 		flex-flow: column nowrap;
 		padding: 30px;
-		height: 160px;
+		height: 15vh;
 		span {
 			color: #1fdaff;
 			font-size: 32px;
+		}
+		.unit {
+			margin-left: 4px;
+			font-size: 24px;
 		}
 	}
 }

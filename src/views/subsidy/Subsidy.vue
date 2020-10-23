@@ -2,7 +2,7 @@
 	<div class="subsidy">
 		<dv-border-box-13>
 			<div class="msg">
-				<div class="text-center">补贴</div>
+				<div class="text-center">今日补贴</div>
 				<dv-charts class="chart" :option="subsidyData" />
 			</div>
 		</dv-border-box-13>

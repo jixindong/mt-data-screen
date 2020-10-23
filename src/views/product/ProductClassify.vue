@@ -2,7 +2,7 @@
 	<div class="productClassify">
 		<dv-border-box-13>
 			<div class="msg">
-				<div class="title">商品分类统计</div>
+				<div class="title">分类统计</div>
 				<dv-capsule-chart class="chart" :config="productClassifyData" />
 			</div>
 		</dv-border-box-13>
@@ -29,7 +29,7 @@ export default {
 			text-align: center;
 		}
 		.chart {
-			height: 270px;
+			height: 27vh;
 		}
 	}
 }
