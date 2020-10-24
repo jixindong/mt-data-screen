@@ -1,36 +1,38 @@
 <template>
-	<dv-full-screen-container class="index">
-		<div class="lf d-flex flex-column">
-			<!-- 达人 -->
-			<star :starData="starData" />
-			<!-- 商品分类 -->
-			<product-classify :productClassifyData="productClassifyData" />
-			<!-- 补贴 -->
-			<subsidy :subsidyData="subsidyData" />
-		</div>
+	<div class="index">
+		<div class="content">
+			<div class="lf d-flex flex-column">
+				<!-- 达人 -->
+				<star :starData="starData" />
+				<!-- 商品分类 -->
+				<product-classify :productClassifyData="productClassifyData" />
+				<!-- 补贴 -->
+				<subsidy :subsidyData="subsidyData" />
+			</div>
 
-		<div class="ct d-flex flex-column">
-			<!-- 标题 -->
-			<div class="titleBox"><div class="title">魔推精选数据中心</div></div>
-			<!-- 时间 -->
-			<div class="dateBox">{{ dateString }}</div>
-			<!-- 成交数量 -->
-			<deal-num :dealNumData="dealNumData" />
-			<!-- 地图 -->
-			<map-nation :mapNationData="mapNationData" />
-			<!-- 成交趋势 -->
-			<deal-trend :dealTrendData="dealTrendData" />
-		</div>
+			<div class="ct d-flex flex-column">
+				<!-- 标题 -->
+				<div class="titleBox"><div class="title">魔推精选数据中心</div></div>
+				<!-- 时间 -->
+				<div class="dateBox">{{ dateString }}</div>
+				<!-- 成交数量 -->
+				<deal-num :dealNumData="dealNumData" />
+				<!-- 地图 -->
+				<map-nation :mapNationData="mapNationData" />
+				<!-- 成交趋势 -->
+				<deal-trend :dealTrendData="dealTrendData" />
+			</div>
 
-		<div class="rt d-flex flex-column">
-			<!-- 商品数量 -->
-			<product-num :productNumData="productNumData" />
-			<!-- 商品排行 -->
-			<product-rank :productRankData="productRankData" />
-			<!-- 带货 -->
-			<sell :sellData="sellData" />
+			<div class="rt d-flex flex-column">
+				<!-- 商品数量 -->
+				<product-num :productNumData="productNumData" />
+				<!-- 商品排行 -->
+				<product-rank :productRankData="productRankData" />
+				<!-- 带货 -->
+				<sell :sellData="sellData" />
+			</div>
 		</div>
-	</dv-full-screen-container>
+	</div>
 </template>
 
 <script>
@@ -235,35 +237,42 @@ export default {
 <style lang="scss" scoped>
 .index {
 	display: flex;
-	color: #fff;
-	font-size: 26px;
-	font-weight: 300;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
 	background-image: url(../assets/images/background-image-1.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-	.lf {
-		width: 30%;
-	}
-	.ct {
-		width: 40%;
-		.titleBox {
-			padding: 5px;
-			.title {
-				padding: 30px 0;
-				font-size: 40px;
-				font-weight: 500;
-				letter-spacing: 10px;
+	> .content {
+		display: flex;
+		width: 100%;
+		color: #fff;
+		font-size: 26px;
+		font-weight: 300;
+		.lf {
+			width: 30%;
+		}
+		.ct {
+			width: 40%;
+			.titleBox {
+				padding: 5px;
+				.title {
+					padding: 30px 0;
+					font-size: 40px;
+					font-weight: 500;
+					letter-spacing: 10px;
+					text-align: center;
+				}
+			}
+			.dateBox {
+				margin: 2px 0;
+				font-size: 18px;
 				text-align: center;
 			}
 		}
-		.dateBox {
-			margin: 2px 0;
-			font-size: 18px;
-			text-align: center;
+		.rt {
+			width: 30%;
 		}
-	}
-	.rt {
-		width: 30%;
 	}
 }
 </style>
