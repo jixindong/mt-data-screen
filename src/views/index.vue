@@ -59,7 +59,7 @@ export default {
 			// 时间
 			dateString: '',
 			// websocket
-			wsURL: 'ws://192.168.1.177:8080/ws/asset',
+			wsURL: 'ws://47.105.121.90:8002/ws/asset',
 			ws: null,
 			// 达人数据
 			starData: {},
@@ -156,28 +156,16 @@ export default {
 				showValue: true
 			};
 			// 补贴数据
+			let subsidyDataRows = [];
+			for (let i = 0; i < 7; i++) {
+				subsidyDataRows[i] = {
+					日期: hzb[i],
+					数额: leftThree[i]
+				};
+			}
 			this.subsidyData = {
-				xAxis: {
-					name: '日期',
-					data: hzb
-				},
-				yAxis: {
-					name: '销售额',
-					data: 'value'
-				},
-				series: [
-					{
-						data: leftThree,
-						type: 'bar',
-						gradient: {
-							color: ['rgba(208, 223, 230, .6)', 'rgba(92, 179, 204, .1)'],
-							local: false
-						},
-						barStyle: {
-							stroke: '#67e0e3'
-						}
-					}
-				]
+				columns: ['日期', '数额'],
+				rows: subsidyDataRows
 			};
 			// 成交数量数据
 			this.dealNumData = {
@@ -194,28 +182,16 @@ export default {
 				rows: indexTwo
 			};
 			// 成交趋势数据
+			let dealTrendDataRows = [];
+			for (let i = 0; i < 7; i++) {
+				dealTrendDataRows[i] = {
+					日期: hzb[i],
+					数额: indexThree[i]
+				};
+			}
 			this.dealTrendData = {
-				title: {
-					text: '成交数额趋势图'
-				},
-				xAxis: {
-					name: '日期',
-					data: hzb
-				},
-				yAxis: {
-					name: '销售额',
-					data: 'value'
-				},
-				series: [
-					{
-						data: indexThree,
-						type: 'line',
-						lineArea: {
-							show: true,
-							gradient: ['rgba(55, 162, 218, 0.6)', 'rgba(55, 162, 218, 0)']
-						}
-					}
-				]
+				columns: ['日期', '数额'],
+				rows: dealTrendDataRows
 			};
 			// 商品数量数据
 			this.productNumData = {

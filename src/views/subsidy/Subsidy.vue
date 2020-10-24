@@ -2,8 +2,8 @@
 	<div class="subsidy">
 		<dv-border-box-13>
 			<div class="msg">
-				<div class="text-center">今日补贴</div>
-				<dv-charts class="chart" :option="subsidyData" />
+				<div class="text-center">商家补贴</div>
+				<ve-histogram :data="subsidyData" :extend="subsidyExtend"></ve-histogram>
 			</div>
 		</dv-border-box-13>
 	</div>
@@ -15,6 +15,30 @@ export default {
 		subsidyData: {
 			type: Object
 		}
+	},
+	data() {
+		return {
+			subsidyExtend: {
+				grid: {
+					top: 20,
+					right: 20,
+					bottom: 20,
+					left: 20,
+					height: 300
+				},
+				color: ['#0094ff'],
+				textStyle: {
+					color: '#fff'
+				},
+				itemStyle: {
+					opacity: 0.7
+				},
+				barMaxWidth: 30,
+				legend: {
+					show: false
+				}
+			}
+		};
 	}
 };
 </script>
@@ -24,9 +48,7 @@ export default {
 	padding: 10px;
 	.msg {
 		padding-top: 20px;
-		.chart {
-			height: 320px;
-		}
+		height: 42vh;
 	}
 }
 </style>

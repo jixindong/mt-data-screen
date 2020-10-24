@@ -40,6 +40,7 @@ export default {
 <style lang="scss" scoped>
 .productRank {
 	padding: 10px;
+	height: 38vh;
 	.msg {
 		padding: 10px 7px 7px;
 		> .title {
@@ -48,12 +49,10 @@ export default {
 		}
 		.productTb {
 			width: 100%;
-			min-height: 220px;
+			height: 26vh;
 			font-size: 16px;
 			text-align: center;
-			overflow: hidden;
 			border-collapse: collapse;
-			border-bottom-left-radius: 19px;
 			thead {
 				background-color: rgba(0, 186, 255, 0.67);
 				th {
@@ -62,6 +61,9 @@ export default {
 				}
 			}
 			tbody tr {
+				&:nth-last-of-type(1) {
+					border-bottom: 0 none;
+				}
 				border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 				td {
 					padding: 4px 0;

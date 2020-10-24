@@ -1,6 +1,11 @@
 <template>
 	<div class="dealTrend">
-		<dv-border-box-13><dv-charts class="chart" :option="dealTrendData" /></dv-border-box-13>
+		<dv-border-box-13>
+			<div class="msg">
+				<div class="text-center">成交额趋势</div>
+				<ve-line :data="dealTrendData" :extend="dealTrendExtend"></ve-line>
+			</div>
+		</dv-border-box-13>
 	</div>
 </template>
 
@@ -10,6 +15,26 @@ export default {
 		dealTrendData: {
 			type: Object
 		}
+	},
+	data() {
+		return {
+			dealTrendExtend: {
+				grid: {
+					top: 20,
+					right: 20,
+					bottom: 0,
+					left: 20,
+					height: 120
+				},
+				color: ['#0094ff'],
+				textStyle: {
+					color: '#fff'
+				},
+				legend: {
+					show: false
+				}
+			}
+		};
 	}
 };
 </script>
@@ -17,8 +42,9 @@ export default {
 <style lang="scss" scoped>
 .dealTrend {
 	padding: 10px;
-	.chart {
-		height: 180px;
+	.msg {
+		padding-top: 20px;
+		height: 22vh;
 	}
 }
 </style>
