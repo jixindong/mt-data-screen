@@ -24,7 +24,7 @@ export default {
 					right: 20,
 					bottom: 20,
 					left: 20,
-					height: 300
+					height: 280
 				},
 				color: ['#0094ff'],
 				textStyle: {
@@ -48,7 +48,7 @@ export default {
 	padding: 10px;
 	.msg {
 		padding-top: 20px;
-		height: 42vh;
+		height: 380px;
 	}
 }
 </style>

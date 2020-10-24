@@ -40,16 +40,16 @@ export default {
 <style lang="scss" scoped>
 .productRank {
 	padding: 10px;
-	height: 38vh;
 	.msg {
 		padding: 10px 7px 7px;
+		height: 340px;
 		> .title {
 			margin: 20px 0;
 			text-align: center;
 		}
 		.productTb {
 			width: 100%;
-			height: 26vh;
+			height: 240px;
 			font-size: 16px;
 			text-align: center;
 			border-collapse: collapse;

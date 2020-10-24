@@ -33,7 +33,7 @@ export default {
 		display: flex;
 		flex-flow: column nowrap;
 		padding: 30px;
-		height: 15vh;
+		height: 160px;
 		span {
 			color: #1fdaff;
 			font-size: 32px;

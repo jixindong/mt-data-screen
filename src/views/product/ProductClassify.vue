@@ -29,7 +29,7 @@ export default {
 			text-align: center;
 		}
 		.chart {
-			height: 27vh;
+			height: 270px;
 		}
 	}
 }

@@ -44,7 +44,7 @@ export default {
 	padding: 10px;
 	.msg {
 		padding-top: 20px;
-		height: 22vh;
+		height: 210px;
 	}
 }
 </style>
