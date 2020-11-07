@@ -2,7 +2,7 @@
 	<div class="subsidy">
 		<dv-border-box-13>
 			<div class="msg">
-				<div class="text-center">商家补贴</div>
+				<div class="text-center">商家补贴(万元)</div>
 				<ve-histogram :data="subsidyData" :extend="subsidyExtend"></ve-histogram>
 			</div>
 		</dv-border-box-13>

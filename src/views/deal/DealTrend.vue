@@ -2,7 +2,7 @@
 	<div class="dealTrend">
 		<dv-border-box-13>
 			<div class="msg">
-				<div class="text-center">成交额趋势</div>
+				<div class="text-center">成交额趋势(万元)</div>
 				<ve-line :data="dealTrendData" :extend="dealTrendExtend"></ve-line>
 			</div>
 		</dv-border-box-13>
